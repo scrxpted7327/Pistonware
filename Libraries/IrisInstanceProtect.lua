@@ -7,7 +7,12 @@ local _getnamecallmethod = getnamecallmethod or get_namecall_method
 local _checkcaller = checkcaller or check_caller
 local _getrawmetatable = get_raw_metatable or getrawmetatable or getraw_metatable
 
-assert(_hookfunction  and _getnamecallmethod and _checkcaller and _getconnections, "Exploit is not supported")
+if not (_hookfunction and _getnamecallmethod and _checkcaller and _getconnections) then
+    warn("Exploit is not supported, you are going to be detected like a little bitch")
+    getgenv().protect_instance = function() end
+    getgenv().unprotect_instance = function() end
+    return false
+end
 
 local function HookMetaMethod(Object, MetaMethod, Function)
     return _hookfunction(assert(_getrawmetatable(Object)[MetaMethod], "Invalid Method"), Function)

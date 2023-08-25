@@ -45,7 +45,7 @@ function tutils.deepCopy(A : Table, seen : Table)
 	local newTable = setmetatable({}, getmetatable(A))
 	alreadySeen[A] = newTable
 	for key, value in pairs(A) do
-		newTable[deepCopy(key, alreadySeen)] = deepCopy(value, alreadySeen)
+		newTable[tutils.deepCopy(key, alreadySeen)] = tutils.deepCopy(value, alreadySeen)
 	end
 	return newTable
 end
@@ -124,7 +124,7 @@ function tutils.listDifferences(A : Table, B : Table)
 	return listOfKeys(tutils.tableDifference(membershipTable(A), membershipTable(B)))
 end
 
-tutils.print = function(print : Function)
+tutils.print = function()
 	local function makeKeyString(key)
 		if type(key) == "string" then
 			return string.format("%s", key)
@@ -196,7 +196,7 @@ tutils.print = function(print : Function)
 
 		recurse(t, nil, 0)
 	end
-end(print)
+end
 
 function tutils.shallowEqual(A : Table, B : Table, ignore : Table)
 	if not A or not B then
