@@ -11086,6 +11086,7 @@ task.spawn(function()
 end)
 
 do -- so your don't hit the local limit w/ ur custom
+	print("init 1")
 	GuiLibrary.RemoveObject("PanicOptionsButton")
 	GuiLibrary.RemoveObject("MissileTPOptionsButton")
 	GuiLibrary.RemoveObject("SwimOptionsButton")
@@ -11096,6 +11097,7 @@ do -- so your don't hit the local limit w/ ur custom
 	GuiLibrary.RemoveObject("XrayOptionsButton")
 	GuiLibrary.RemoveObject("SchematicaOptionsButton")
 	GuiLibrary.RemoveObject("FirewallBypassOptionsButton")
+	print("init 2")
 
 	local git = {cache = {}}
 	git.getCommit = function(user, repo)
@@ -11120,7 +11122,6 @@ do -- so your don't hit the local limit w/ ur custom
 		local commit = git.getCommit(user, repo)
 		return game:HttpGet(string.format("https://raw.githubusercontent.com/%s/%s/blob/%s/%s", user, repo, commit, file), true)
 	end
-
 	local function thisWasSkiddedByScrxpted(scripturl)
 		if not isfile("vape/"..scripturl) then
 			local suc, res = pcall(function() return git.request("supercellgamer", "Pistonware", scripturl) end)
@@ -11134,6 +11135,8 @@ do -- so your don't hit the local limit w/ ur custom
 
 	getgenv().t = loadstring(thisWasSkiddedByScrxpted("Libraries/rblx-t.lua"))() -- I need to do this because tutils uses t and I'm too lazy to localize it there
 	getgenv().tutils = loadstring(thisWasSkiddedByScrxpted("Libraries/rblx-tutils.lua"))()
+
+	print("init 3")
 
 	-- compatibility fix lol
 	do
@@ -11168,6 +11171,8 @@ do -- so your don't hit the local limit w/ ur custom
 			end)
 		end
 	end
+
+	print("init 4")
 
 	local ByteLib = {}
 	do
@@ -11210,6 +11215,8 @@ do -- so your don't hit the local limit w/ ur custom
 	local httpService = getService("HttpService")
 	local statsService = getService("Stats")
 	local localMouse = lplr:GetMouse()
+
+	print("init 5")
 
 	local singleWarning
 	do
@@ -11376,6 +11383,8 @@ do -- so your don't hit the local limit w/ ur custom
 		end
 	end
 
+	print("init 6")
+
 	MessageHandler = {MessageCache = {}} -- localized on line 27
 	do
 		local success, frame = pcall(function() return coreGui.ExperienceChat.appLayout.chatWindow.scrollingView.bottomLockedScrollView.RCTScrollView.RCTScrollContentView end)
@@ -11478,6 +11487,8 @@ do -- so your don't hit the local limit w/ ur custom
 		end
 	end
 
+
+	print("init 7")
 	
 	local oldmatchstate = 0
 	local DataPing = statsService:FindFirstChild("Data Ping", true)
@@ -11528,8 +11539,10 @@ do -- so your don't hit the local limit w/ ur custom
 	local function fixVec(vec)
 		return vec * xzFix
 	end
+	print("init 8")
 
 	if isUwp then
+		print("uwp momento")
 		local function notlasso()
 			for i, v in next, collectionService:GetTagged("LassoHooked") do 
 				if v == lplr.Character then 
@@ -11721,6 +11734,7 @@ do -- so your don't hit the local limit w/ ur custom
 			return oldupdate(tab, targetsize)
 		end
 	end)
+	print("init 9")
 
 	runFunction(function()
 		local InfiniteJump = {Enabled = false}
